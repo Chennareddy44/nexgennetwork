@@ -4,7 +4,7 @@ const buttonList = [
   "Gaming",
   "Songs",
   "UFC",
-  "Live Stream",
+  "Live",
   "Cricket",
   "FootBall",
   "Songs",
@@ -15,7 +15,7 @@ const buttonList = [
 
 const ButtonList = () => {
   return (
-    <div className="flex ml-0">
+    <div className="flex ml-5">
       {buttonList.map((buttonElement, index) => (
         <Button key={index} name={buttonElement} />
       ))}

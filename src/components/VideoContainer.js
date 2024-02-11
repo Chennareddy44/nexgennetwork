@@ -1,10 +1,30 @@
+import { useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
+import { YOUTUBE_VIDEOS_API } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const VideoContainer = () => {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    getVideos();
+  }, []);
+
+  const getVideos = async () => {
+    const response = await fetch(YOUTUBE_VIDEOS_API);
+    const data = await response.json();
+    setVideos(data.items);
+  };
+
   return (
-    <>
-      <VideoCard />
-    </>
+    <div className="flex flex-wrap justify-evenly">
+      {videos.length > 0 &&
+        videos.map((video) => (
+          <Link to={"/watchpage?v=" + video.id}>
+            <VideoCard key={video.id} info={video} />
+          </Link>
+        ))}
+    </div>
   );
 };
 
