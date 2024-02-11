@@ -1,10 +1,16 @@
+import { useSelector } from "react-redux";
+
 const Sidebar = () => {
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+
+  if (!isMenuOpen) return null;
+
   return (
-    <div className="col-span-1 font-bold shadow-lg my-1">
+    <div className="col-span-1 font-bold shadow-lg my-1 w-36">
       <ul className="ml-3">
         <li className="my-3">🏡 Home</li>
         <li className="my-8 ">🩳 Shorts</li>
-        <li className="my-8 ">💵 Subscriptions</li>
+        <li className="my-8">💵 Subscriptions</li>
         <li className="my-8 ">🧑‍🍼 You</li>
         <li className="my-8">📗 History</li>
       </ul>
