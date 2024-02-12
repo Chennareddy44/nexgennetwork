@@ -20,8 +20,8 @@ const VideoContainer = () => {
     <div className="flex flex-wrap justify-evenly">
       {videos.length > 0 &&
         videos.map((video) => (
-          <Link to={"/watchpage?v=" + video.id}>
-            <VideoCard key={video.id} info={video} />
+          <Link key={video.id} to={"/watch?v=" + video.id}>
+            <VideoCard info={video} />
           </Link>
         ))}
     </div>
