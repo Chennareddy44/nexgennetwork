@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
 import YouTube from "react-youtube";
+import CommentsContainer from "./CommentsContainer";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
@@ -15,15 +16,18 @@ const WatchPage = () => {
   }, [dispatch]);
 
   return (
-    <YouTube
-      className="m-10"
-      videoId={videoId}
-      opts={{
-        playerVars: {
-          autoplay: 1,
-        },
-      }}
-    />
+    <div>
+      <YouTube
+        className="m-10 mb-4"
+        videoId={videoId}
+        opts={{
+          playerVars: {
+            autoplay: 1,
+          },
+        }}
+      />
+      <CommentsContainer />
+    </div>
   );
 };
 
